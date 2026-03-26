@@ -14,8 +14,6 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import top.yousef.application.services.interfaces.IPatientService;
 import top.yousef.presentation.dtos.PatientProfileResponse;
 
-import java.io.IOException;
-
 @Path("/api/patients")
 @Authenticated
 @Produces(MediaType.APPLICATION_JSON)
@@ -30,7 +28,7 @@ public class PatientResource {
 
     @GET
     @Path("/profile")
-    public Uni<PatientProfileResponse> getPatientProfile() throws IOException {
+    public Uni<PatientProfileResponse> getPatientProfile() {
         var kycId = jwt.getClaim("sub");
 
         if (kycId == null) {
